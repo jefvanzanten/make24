@@ -1,0 +1,8 @@
+.button {
+  font-size: 8rem;
+  background-color: rgb(156, 128, 16);
+}
+
+.clicked {
+  background-color: rgb(255, 208, 0);
+}
