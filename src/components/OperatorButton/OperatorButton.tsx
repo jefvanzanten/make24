@@ -1,19 +1,16 @@
-import { useState } from "react";
 import styles from "./OperatorButton.module.css";
 
 type OperatorButtonProps = {
   operator: string;
-  passedFunc: () => void;
+  handleClick: () => void;
+  isSelected: boolean;
 };
 
-const OperatorButton = ({ operator, passedFunc }: OperatorButtonProps) => {
-  const [isSelected, setIsSelected] = useState<boolean>(false);
-
-  function handleClick() {
-    setIsSelected(!isSelected);
-    passedFunc();
-  }
-
+const OperatorButton = ({
+  operator,
+  handleClick,
+  isSelected,
+}: OperatorButtonProps) => {
   return (
     <button
       className={`${styles.button} ${isSelected ? `${styles.clicked}` : ""}`}

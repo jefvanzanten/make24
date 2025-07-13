@@ -1,19 +1,12 @@
-import { useState } from "react";
 import styles from "./NumberButton.module.css";
 
 type NumberButtonProps = {
   num: number | null;
-  passedFunc: () => void;
+  handleClick: () => void;
+  isSelected: boolean;
 };
 
-const NumberButton = ({ num, passedFunc }: NumberButtonProps) => {
-  const [isSelected, setIsSelected] = useState<boolean>(false);
-
-  function handleClick() {
-    setIsSelected(!isSelected);
-    passedFunc();
-  }
-
+const NumberButton = ({ num, handleClick, isSelected }: NumberButtonProps) => {
   if (num === null) {
     return <div className={`${styles.button} ${styles.transparent}`}></div>;
   }
