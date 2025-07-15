@@ -9,7 +9,7 @@ function App() {
     handleOperatorClick,
     sequence,
     handleNumberClick,
-    selectedNumberButtonState,
+    selectedNumber,
     selectedOperator,
   } = use24Game();
 
@@ -19,7 +19,7 @@ function App() {
         {sequence?.map((state, index) => (
           <NumberButton
             key={index}
-            isSelected={selectedNumberButtonState?.id! === index}
+            isSelected={selectedNumber?.id! === index}
             state={state}
             handleClick={() => handleNumberClick(state)}
           />
