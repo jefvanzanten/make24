@@ -20,13 +20,12 @@ async function getRandomSequence(difficulty: string) {
     const sequences = data.sequences[difficulty];
 
     if (!sequences || sequences.length === 0) {
-      throw new Error(`Geen sequences gevonden voor difficulty: ${difficulty}`);
+      throw new Error(`No sequences found for difficulty: ${difficulty}`);
     }
 
     const randomIndex = Math.floor(Math.random() * sequences.length);
     const selectedSequence = sequences[randomIndex];
 
-    // Gebruik de numbers array uit het sequence object
     const numbers = selectedSequence.numbers;
 
     if (!Array.isArray(numbers)) {
@@ -39,7 +38,7 @@ async function getRandomSequence(difficulty: string) {
       isDisabled: false,
     }));
   } catch (error) {
-    console.error("Fout bij het laden van sequences:", error);
+    console.error("Error loading sequences", error);
     return null;
   }
 }

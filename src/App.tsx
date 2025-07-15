@@ -19,7 +19,7 @@ function App() {
         {sequence?.map((state, index) => (
           <NumberButton
             key={index}
-            isSelected={selectedNumber?.id! === index}
+            isSelected={selectedNumber?.id === index}
             state={state}
             handleClick={() => handleNumberClick(state)}
           />
