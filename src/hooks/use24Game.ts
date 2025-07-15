@@ -5,16 +5,17 @@ import {
   type Operator,
 } from "../sequenceService";
 
-export type NumberButtonState = {
+export type NumberState = {
   id: number;
   value: number | null;
   isDisabled: boolean;
 };
 
 export const use24Game = () => {
-  const [sequence, setSequence] = useState<NumberButtonState[]>();
-  const [selectedNumber, setSelectedNumber] =
-    useState<NumberButtonState | null>(null);
+  const [sequence, setSequence] = useState<NumberState[]>();
+  const [selectedNumber, setSelectedNumber] = useState<NumberState | null>(
+    null
+  );
   const [selectedOperator, setSelectedOperator] = useState<Operator | null>(
     null
   );
@@ -30,7 +31,7 @@ export const use24Game = () => {
     loadSequence();
   }, []);
 
-  function handleNumberClick(clickedNumber: NumberButtonState) {
+  function handleNumberClick(clickedNumber: NumberState) {
     if (selectedNumber === clickedNumber) {
       setSelectedNumber(null);
       return;
@@ -44,26 +45,26 @@ export const use24Game = () => {
     setSelectedNumber(clickedNumber);
   }
 
-  function handleOperatorClick(operator: Operator) {
-    if (selectedOperator === operator || selectedNumber === null) {
+  function handleOperatorClick(clickedOperator: Operator) {
+    if (selectedOperator === clickedOperator || selectedNumber === null) {
       setSelectedOperator(null);
       return;
     }
 
-    setSelectedOperator(operator);
+    setSelectedOperator(clickedOperator);
   }
 
-  function performCalculation(state: NumberButtonState) {
+  function performCalculation(rhs: NumberState) {
     const result = calculate(
       selectedNumber?.value!,
       selectedOperator!,
-      state.value!
+      rhs.value!
     );
 
-    mergeNumberInCard(state, result);
+    mergeNumberInCard(rhs, result);
   }
 
-  function mergeNumberInCard(state: NumberButtonState, result: number) {
+  function mergeNumberInCard(rhs: NumberState, result: number) {
     const newSequence = [...sequence!];
 
     newSequence[selectedNumber!.id] = {
@@ -72,26 +73,26 @@ export const use24Game = () => {
       value: null,
     };
 
-    const second = (newSequence[state!.id] = {
-      ...newSequence[state?.id!],
+    const updatedState = (newSequence[rhs!.id] = {
+      ...newSequence[rhs?.id!],
       value: result,
     });
 
     setSequence(newSequence);
 
-    postMerge(second);
+    postMerge(updatedState);
 
     if (hasWon(newSequence)) {
       setTimeout(() => alert("gewonnen!"), 500);
     }
   }
 
-  function hasWon(sequence: NumberButtonState[]) {
+  function hasWon(sequence: NumberState[]) {
     const activeButtons = sequence.filter((s) => !s.isDisabled);
     return activeButtons.length === 1 && activeButtons[0].value === 24;
   }
 
-  function postMerge(state: NumberButtonState) {
+  function postMerge(state: NumberState) {
     console.log("post merge");
     setSelectedNumber(state);
     setSelectedOperator(null);

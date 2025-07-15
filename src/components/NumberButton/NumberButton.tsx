@@ -1,8 +1,8 @@
-import type { NumberButtonState } from "../../hooks/use24Game";
+import type { NumberState } from "../../hooks/use24Game";
 import styles from "./NumberButton.module.css";
 
 export type NumberButtonProps = {
-  state: NumberButtonState;
+  state: NumberState;
   isSelected: boolean;
   handleClick: () => void;
 };
