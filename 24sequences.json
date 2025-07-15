@@ -64,11 +64,6 @@
         "result": 24
       },
       {
-        "numbers": [3, 3, 8, 1],
-        "solution": "(3 + 3) * (8 - 1)",
-        "result": 24
-      },
-      {
         "numbers": [1, 2, 3, 18],
         "solution": "18 + 3 + 2 + 1",
         "result": 24
