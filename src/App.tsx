@@ -5,8 +5,13 @@ import { use24Game } from "./hooks/use24Game";
 import type { Operator } from "./sequenceService";
 
 function App() {
-  const { selectOperator, sequence, selectNumberButton, selectedOperator } =
-    use24Game();
+  const {
+    handleOperatorClick,
+    sequence,
+    handleNumberClick,
+    selectedNumberButtonState,
+    selectedOperator,
+  } = use24Game();
 
   return (
     <div className={styles.container}>
@@ -14,8 +19,9 @@ function App() {
         {sequence?.map((state, index) => (
           <NumberButton
             key={index}
+            isSelected={selectedNumberButtonState?.id! === index}
             state={state}
-            handleClick={() => selectNumberButton(state)}
+            handleClick={() => handleNumberClick(state)}
           />
         ))}
       </div>
@@ -23,7 +29,7 @@ function App() {
         {(["+", "-", "x", ":"] as Operator[]).map((operator, index) => (
           <OperatorButton
             key={index}
-            handleClick={() => selectOperator(operator)}
+            handleClick={() => handleOperatorClick(operator)}
             isSelected={operator === selectedOperator}
             operator={operator}
           />

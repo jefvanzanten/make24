@@ -10,15 +10,9 @@ const operations = {
 };
 
 const calculate = (a: number, operator: Operator, b: number) => {
-  console.log("calc: a:" + a + "operator: " + operator + "b: " + b);
+  console.log("calc: a: " + a + " operator: " + operator + " b: " + b);
   return operations[operator]?.(a, b) ?? 0;
 };
-
-// function createNumberProps(sequence: number[]) {
-//     sequence.map((key, item) = {
-//         NumberButtonProps = { key, value, setSelectedNumber(key)}
-//     });
-// }
 
 async function getRandomSequence(difficulty: string) {
   try {
@@ -44,7 +38,6 @@ async function getRandomSequence(difficulty: string) {
     return numbers.map((value: number, index: number) => ({
       id: index,
       value: value,
-      isSelected: false,
       isDisabled: false,
     }));
   } catch (error) {
