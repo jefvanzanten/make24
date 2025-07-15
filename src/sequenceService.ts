@@ -1,5 +1,3 @@
-const numberSequence = [1, 3, 4, 6];
-
 export type Operator = "+" | "-" | "x" | ":";
 
 const operations = {

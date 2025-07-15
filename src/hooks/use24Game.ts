@@ -18,7 +18,6 @@ export const use24Game = () => {
   const [selectedOperator, setSelectedOperator] = useState<Operator | null>(
     null
   );
-  const [gameWon, setGameWon] = useState(false);
 
   useEffect(() => {
     const loadSequence = async () => {
@@ -58,18 +57,18 @@ export const use24Game = () => {
 
     // console.log("result: " + result);
 
-    const newState = mergeNumberInCard(state, result);
+    mergeNumberInCard(state, result);
   }
 
   function mergeNumberInCard(state: NumberButtonState, result: number) {
     // console.log("mergeNumberInCard");
     const newSequence = [...sequence!];
 
-    const first = (newSequence[selectedNumberButtonState!.id] = {
+    newSequence[selectedNumberButtonState!.id] = {
       ...newSequence[selectedNumberButtonState!.id],
       isDisabled: true,
       value: null,
-    });
+    };
 
     // console.log("first: " + first.value);
 
