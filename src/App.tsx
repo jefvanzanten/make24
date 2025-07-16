@@ -11,31 +11,39 @@ function App() {
     handleNumberClick,
     selectedNumber,
     selectedOperator,
+    reset,
   } = use24Game();
 
   return (
-    <div className={styles.container}>
-      <div className={styles["number-container"]}>
-        {sequence?.map((state, index) => (
-          <NumberButton
-            key={index}
-            isSelected={selectedNumber?.id === index}
-            state={state}
-            handleClick={() => handleNumberClick(state)}
-          />
-        ))}
+    <>
+      <header className={styles.header}>
+        <button className={styles.reset} onClick={reset}>
+          <img src="./reset.png" className={styles.img} />
+        </button>
+      </header>
+      <div className={styles.container}>
+        <div className={styles["number-container"]}>
+          {sequence?.map((state, index) => (
+            <NumberButton
+              key={index}
+              isSelected={selectedNumber?.id === index}
+              state={state}
+              handleClick={() => handleNumberClick(state)}
+            />
+          ))}
+        </div>
+        <div className={styles["operator-container"]}>
+          {(["+", "-", "x", ":"] as Operator[]).map((operator, index) => (
+            <OperatorButton
+              key={index}
+              handleClick={() => handleOperatorClick(operator)}
+              isSelected={operator === selectedOperator}
+              operator={operator}
+            />
+          ))}
+        </div>
       </div>
-      <div className={styles["operator-container"]}>
-        {(["+", "-", "x", ":"] as Operator[]).map((operator, index) => (
-          <OperatorButton
-            key={index}
-            handleClick={() => handleOperatorClick(operator)}
-            isSelected={operator === selectedOperator}
-            operator={operator}
-          />
-        ))}
-      </div>
-    </div>
+    </>
   );
 }
 

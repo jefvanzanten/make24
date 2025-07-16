@@ -13,6 +13,7 @@ export type NumberState = {
 
 export const use24Game = () => {
   const [sequence, setSequence] = useState<NumberState[]>();
+  const [sequenceCopy, setSequenceCopy] = useState<NumberState[]>();
   const [selectedNumber, setSelectedNumber] = useState<NumberState | null>(
     null
   );
@@ -25,6 +26,7 @@ export const use24Game = () => {
       const sequenceData = await getRandomSequence("medium");
       if (sequenceData) {
         setSequence(sequenceData);
+        setSequenceCopy(sequenceData);
       }
     };
 
@@ -98,11 +100,18 @@ export const use24Game = () => {
     setSelectedOperator(null);
   }
 
+  function reset() {
+    setSelectedNumber(null);
+    setSelectedOperator(null);
+    setSequence(sequenceCopy);
+  }
+
   return {
     selectedNumber,
     handleNumberClick,
     handleOperatorClick,
     selectedOperator,
     sequence,
+    reset,
   };
 };
