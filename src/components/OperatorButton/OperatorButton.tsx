@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styles from "./OperatorButton.module.css";
 
 type OperatorButtonProps = {
@@ -6,11 +7,11 @@ type OperatorButtonProps = {
   isSelected: boolean;
 };
 
-const OperatorButton = ({
+const OperatorButton = memo(function OperatorButton({
   operator,
   handleClick,
   isSelected,
-}: OperatorButtonProps) => {
+}: OperatorButtonProps) {
   console.log("OperatorButton");
   return (
     <button
@@ -20,6 +21,6 @@ const OperatorButton = ({
       {operator}
     </button>
   );
-};
+});
 
 export default OperatorButton;
