@@ -12,6 +12,8 @@ const NumberButton = ({
   handleClick,
   isSelected,
 }: NumberButtonProps) => {
+  console.log("NumberButton");
+
   if (state.isDisabled) {
     return <div className={`${styles.button} ${styles.transparent}`}></div>;
   }

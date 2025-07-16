@@ -11,6 +11,7 @@ const OperatorButton = ({
   handleClick,
   isSelected,
 }: OperatorButtonProps) => {
+  console.log("OperatorButton");
   return (
     <button
       className={`${styles.button} ${isSelected ? `${styles.clicked}` : ""}`}

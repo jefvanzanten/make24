@@ -12,14 +12,20 @@ function App() {
     selectedNumber,
     selectedOperator,
     reset,
+    refreshSequence,
   } = use24Game();
 
   return (
     <>
       <header className={styles.header}>
-        <button className={styles.reset} onClick={reset}>
-          <img src="./reset.png" className={styles.img} />
-        </button>
+        <div className={styles["button-container"]}>
+          <button className={styles.reset} onClick={reset}>
+            <img src="./reset.png" className={styles.img} />
+          </button>
+          <button className={styles.reset} onClick={refreshSequence}>
+            <img src="./refresh.jpg" className={styles.img} />
+          </button>
+        </div>
       </header>
       <div className={styles.container}>
         <div className={styles["number-container"]}>

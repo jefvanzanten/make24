@@ -22,41 +22,47 @@ export const use24Game = () => {
   );
 
   useEffect(() => {
-    const loadSequence = async () => {
-      const sequenceData = await getRandomSequence("medium");
-      if (sequenceData) {
-        setSequence(sequenceData);
-        setSequenceCopy(sequenceData);
-      }
-    };
-
     loadSequence();
   }, []);
 
+  const loadSequence = async () => {
+    const sequenceData = await getRandomSequence("medium");
+    if (sequenceData) {
+      setSequence(sequenceData);
+      setSequenceCopy(sequenceData);
+    }
+  };
+
   function handleNumberClick(clickedNumber: NumberState) {
     if (selectedNumber === clickedNumber) {
+      console.log("setSelectedNumber(null)");
       setSelectedNumber(null);
       return;
     }
 
     if (selectedNumber !== null && selectedOperator !== null) {
+      console.log("performCalculation(clickedNumber)");
       performCalculation(clickedNumber);
       return;
     }
 
+    console.log("setSelectedNumber(clickedNumber)");
     setSelectedNumber(clickedNumber);
   }
 
   function handleOperatorClick(clickedOperator: Operator) {
     if (selectedOperator === clickedOperator || selectedNumber === null) {
+      console.log("setSelectedOperator(null)");
       setSelectedOperator(null);
       return;
     }
 
+    console.log("setSelectedOperator(clickedOperator)");
     setSelectedOperator(clickedOperator);
   }
 
   function performCalculation(rhs: NumberState) {
+    console.log("performCalculation");
     const result = calculate(
       selectedNumber?.value!,
       selectedOperator!,
@@ -106,6 +112,10 @@ export const use24Game = () => {
     setSequence(sequenceCopy);
   }
 
+  function refreshSequence() {
+    loadSequence();
+  }
+
   return {
     selectedNumber,
     handleNumberClick,
@@ -113,5 +123,6 @@ export const use24Game = () => {
     selectedOperator,
     sequence,
     reset,
+    refreshSequence,
   };
 };
