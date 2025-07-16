@@ -1,30 +1,3 @@
-.header {
-  width: 100%;
-  height: 10vh;
-  background-color: rgb(222, 204, 11);
-  display: flex;
-  justify-content: end;
-  padding: 1em;
-}
-
-.button-container {
-  display: flex;
-  gap: 1em;
-}
-
-.img {
-  object-fit: cover;
-  width: 2em;
-  height: 2em;
-}
-
-.reset {
-  cursor: pointer;
-  border: none;
-  padding: 1em;
-  border-radius: 0.5em;
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -35,30 +8,8 @@
   min-width: 100%;
 }
 
-.number-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1em;
-}
-
-.operator-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1em;
-}
-
 @media screen and (min-width: 1024px) {
   .container {
     width: 40%;
-  }
-
-  .img {
-    width: 3em;
-    height: 3em;
-  }
-
-  .header {
-    height: 8vh;
-    justify-content: center;
   }
 }

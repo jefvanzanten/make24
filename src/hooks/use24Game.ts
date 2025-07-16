@@ -52,7 +52,8 @@ export const use24Game = () => {
 
   function handleOperatorClick(clickedOperator: Operator) {
     if (selectedOperator === clickedOperator || selectedNumber === null) {
-      console.log("setSelectedOperator(null)");
+      console.log("selectedOperator: " + selectedOperator);
+      console.log("selectedNumber: " + selectedNumber);
       setSelectedOperator(null);
       return;
     }
