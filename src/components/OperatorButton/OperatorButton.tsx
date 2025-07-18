@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styles from "./OperatorButton.module.css";
 
 type OperatorButtonProps = {
@@ -22,4 +23,4 @@ const OperatorButton = ({
   );
 };
 
-export default OperatorButton;
+export default memo(OperatorButton);
