@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { NumberState } from "../../hooks/use24Game";
 import styles from "./NumberButton.module.css";
 
@@ -7,11 +8,11 @@ export type NumberButtonProps = {
   handleClick: () => void;
 };
 
-const NumberButton = ({
+const NumberButton = memo(function NumberButton({
   state,
-  handleClick,
   isSelected,
-}: NumberButtonProps) => {
+  handleClick,
+}: NumberButtonProps) {
   console.log("NumberButton");
 
   if (state.isDisabled) {
@@ -26,6 +27,6 @@ const NumberButton = ({
       {state.value}
     </button>
   );
-};
+});
 
 export default NumberButton;

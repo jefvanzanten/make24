@@ -11,11 +11,13 @@ function App() {
     sequence,
     handleNumberClick,
     selectedNumber,
+    reset,
+    refreshSequence,
   } = use24Game();
 
   return (
     <>
-      <Header />
+      <Header reset={reset} refreshSequence={refreshSequence} />
       <div className={styles.container}>
         <NumberGrid
           sequence={sequence!}

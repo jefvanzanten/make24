@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   calculate,
   getRandomSequence,
@@ -33,7 +33,7 @@ export const use24Game = () => {
     }
   };
 
-  function handleNumberClick(clickedNumber: NumberState) {
+  const handleNumberClick = useCallback((clickedNumber: NumberState) => {
     if (selectedNumber === clickedNumber) {
       console.log("setSelectedNumber(null)");
       setSelectedNumber(null);
@@ -48,10 +48,10 @@ export const use24Game = () => {
 
     console.log("setSelectedNumber(clickedNumber)");
     setSelectedNumber(clickedNumber);
-  }
+  }, []);
 
-  function handleOperatorClick(clickedOperator: Operator) {
-    if (selectedOperator === clickedOperator || selectedNumber === null) {
+  const handleOperatorClick = useCallback((clickedOperator: Operator) => {
+    if (selectedOperator === clickedOperator) {
       console.log("selectedOperator: " + selectedOperator);
       console.log("selectedNumber: " + selectedNumber);
       setSelectedOperator(null);
@@ -60,7 +60,7 @@ export const use24Game = () => {
 
     console.log("setSelectedOperator(clickedOperator)");
     setSelectedOperator(clickedOperator);
-  }
+  }, []);
 
   function performCalculation(rhs: NumberState) {
     console.log("performCalculation");

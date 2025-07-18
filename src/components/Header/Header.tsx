@@ -1,9 +1,15 @@
-import { use24Game } from "../../hooks/use24Game";
+import { memo } from "react";
 import styles from "./Header.module.css";
 
-function Header() {
-  const { reset, refreshSequence } = use24Game();
+interface HeaderProps {
+  reset: () => void;
+  refreshSequence: () => void;
+}
 
+const Header = memo(function NumberButton({
+  reset,
+  refreshSequence,
+}: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles["button-container"]}>
@@ -16,6 +22,6 @@ function Header() {
       </div>
     </header>
   );
-}
+});
 
 export default Header;
