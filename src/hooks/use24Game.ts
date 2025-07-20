@@ -33,7 +33,7 @@ export const use24Game = () => {
     }
   };
 
-  const handleNumberClick = useCallback((clickedNumber: NumberState) => {
+  const handleNumberClick = (clickedNumber: NumberState) => {
     if (selectedNumber === clickedNumber) {
       console.log("setSelectedNumber(null)");
       setSelectedNumber(null);
@@ -48,9 +48,9 @@ export const use24Game = () => {
 
     console.log("setSelectedNumber(clickedNumber)");
     setSelectedNumber(clickedNumber);
-  }, []);
+  };
 
-  const handleOperatorClick = useCallback((clickedOperator: Operator) => {
+  const handleOperatorClick = (clickedOperator: Operator) => {
     if (selectedOperator === clickedOperator) {
       console.log("selectedOperator: " + selectedOperator);
       console.log("selectedNumber: " + selectedNumber);
@@ -60,7 +60,7 @@ export const use24Game = () => {
 
     console.log("setSelectedOperator(clickedOperator)");
     setSelectedOperator(clickedOperator);
-  }, []);
+  };
 
   function performCalculation(rhs: NumberState) {
     console.log("performCalculation");
@@ -74,24 +74,21 @@ export const use24Game = () => {
   }
 
   function mergeNumberInCard(rhs: NumberState, result: number) {
-    const newSequence = [...sequence!];
+    console.log("merge");
 
-    newSequence[selectedNumber!.id] = {
-      ...newSequence[selectedNumber!.id],
-      isDisabled: true,
-      value: null,
-    };
+    if (sequence === undefined || selectedNumber === null) return;
 
-    const updatedState = (newSequence[rhs!.id] = {
-      ...newSequence[rhs?.id!],
-      value: result,
-    });
+    if (selectedNumber !== null && sequence !== undefined) {
+      rhs.value = result;
+      const state = selectedNumber;
+      state.isDisabled = true;
+      state.value = null;
+      setSelectedNumber(state);
+    }
 
-    setSequence(newSequence);
+    postMerge(rhs);
 
-    postMerge(updatedState);
-
-    if (hasWon(newSequence)) {
+    if (hasWon(sequence!)) {
       setTimeout(() => alert("gewonnen!"), 500);
     }
   }

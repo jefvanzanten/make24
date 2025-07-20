@@ -8,7 +8,6 @@ function App() {
   const {
     handleOperatorClick,
     selectedOperator,
-    sequence,
     handleNumberClick,
     selectedNumber,
     reset,
@@ -20,7 +19,6 @@ function App() {
       <Header reset={reset} refreshSequence={refreshSequence} />
       <div className={styles.container}>
         <NumberGrid
-          sequence={sequence!}
           handleNumberClick={handleNumberClick}
           selectedNumber={selectedNumber!}
         />

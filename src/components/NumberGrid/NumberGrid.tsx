@@ -3,16 +3,13 @@ import NumberButton from "../NumberButton/NumberButton";
 import styles from "./NumberGrid.module.css";
 
 interface NumberGridProps {
-  sequence: NumberState[];
   handleNumberClick: (state: NumberState) => void;
   selectedNumber: NumberState;
 }
 
-function NumberGrid({
-  sequence,
-  handleNumberClick,
-  selectedNumber,
-}: NumberGridProps) {
+function NumberGrid({ handleNumberClick, selectedNumber }: NumberGridProps) {
+  const { sequence } = use24Game();
+
   return (
     <div className={styles["number-container"]}>
       {sequence?.map((state, index) => (
