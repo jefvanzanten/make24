@@ -15,7 +15,7 @@ const NumberButton = ({
   console.log("NumberButton");
 
   if (state.isDisabled) {
-    return <div className={`${styles.button} ${styles.transparent}`}></div>;
+    return <div className={`${styles.transparent}`}></div>;
   }
 
   return (
