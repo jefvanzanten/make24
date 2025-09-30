@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://jeffreyvnzanten.github.io/make24",
+  "homepage": "https://jefvanzanten.github.io/make24",
   "scripts": {
     "dev": "vite --host",
     "build": "tsc -b && vite build",
